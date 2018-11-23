@@ -1,2 +1,5 @@
 *.swp
 *.o
+exhaustive
+worst
+*.txt

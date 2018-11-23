@@ -1,6 +1,12 @@
-all: exhaustive
+LIBS=file.o \
+	 common.o
 
-exhaustive:exhaustive.o file.o
+all: exhaustive worst
+
+exhaustive:exhaustive.o $(LIBS)
+	g++ $^ -o $@
+
+worst:worst.o $(LIBS)
 	g++ $^ -o $@
 
 %.o:%.cpp

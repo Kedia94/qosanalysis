@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <cassert>
+#include <iostream>
 
 #include "common.h"
 
@@ -23,10 +24,8 @@ bool sort_utilization(const struct task &i, const struct task &j)
 
 bool is_schedulable(const std::vector<struct task> task_list)
 {
-	assert(task_list.size() == 10);
 	std::vector<struct task> tasks = task_list;
 
-	std::stable_sort(tasks.begin(), tasks.end(), sort_period);
 
 	double sum_util = 0;
 	for (int i=0; i<tasks.size(); i++)
@@ -36,18 +35,18 @@ bool is_schedulable(const std::vector<struct task> task_list)
 	if (sum_util >= 1)
 		return false;
 
-	for (int i=0; i<tasks.size(); i++)
+	int i= tasks.size()-1;
+
+	for (int L = tasks[0].period+1; L < tasks[i].period; L++)
 	{
-		for (int L = tasks[0].period*L_FACTOR+1; L < tasks[i].period*L_FACTOR; L++)
+
+		long right = tasks[i].execute;
+		for (int j=0; j<i; j++)
 		{
-			long right = tasks[i].execute * L_FACTOR;
-			for (int j=0; j<i; i++)
-			{
-				right += (long)((L-1)/tasks[j].period/L_FACTOR) * tasks[j].execute * L_FACTOR;
-			}
-			if (L < right)
-				return false;
+			right += (long)((L-1)/tasks[j].period) * tasks[j].execute;
 		}
+		if (L < right)
+			return false;
 	}
 
 	return true;

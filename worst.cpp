@@ -19,6 +19,7 @@ int main()
 	std::vector<struct task> task8 = readFile(TASK8);
 	std::vector<struct task> task9 = readFile(TASK9);
 
+	std::stable_sort(task0.begin(), task0.end(), sort_quality);
 	std::stable_sort(task1.begin(), task1.end(), sort_quality);
 	std::stable_sort(task2.begin(), task2.end(), sort_quality);
 	std::stable_sort(task3.begin(), task3.end(), sort_quality);

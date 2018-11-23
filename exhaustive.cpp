@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <cassert>
 
 #include "config.h"
 #include "common.h"
@@ -33,54 +34,108 @@ int main()
 
 	for (int i0=0; i0<task0.size(); i0++)
 	{
+		std::vector<struct task> temp_task_set;
+		temp_task_set.push_back(task0[i0]);
+		assert(temp_task_set.size() == 1);
+
+		if (!is_schedulable(temp_task_set))
+			continue;
 		for (int i1=0; i1<task1.size(); i1++)
 		{
+			while (temp_task_set.size() != 1)
+				temp_task_set.pop_back();
+			temp_task_set.push_back(task1[i1]);
+			assert(temp_task_set.size() == 2);
+
+			if (!is_schedulable(temp_task_set))
+				continue;
 			for (int i2=0; i2<task2.size(); i2++)
 			{
+				while (temp_task_set.size() != 2)
+					temp_task_set.pop_back();
+				temp_task_set.push_back(task2[i2]);
+				assert(temp_task_set.size() == 3);
+
+				if (!is_schedulable(temp_task_set))
+					continue;
 				for (int i3=0; i3<task3.size(); i3++)
 				{
+					while (temp_task_set.size() != 3)
+						temp_task_set.pop_back();
+					temp_task_set.push_back(task3[i3]);
+					assert(temp_task_set.size() == 4);
+
+					if (!is_schedulable(temp_task_set))
+						continue;
 					for (int i4=0; i4<task4.size(); i4++)
 					{
+						while (temp_task_set.size() != 4)
+							temp_task_set.pop_back();
+						temp_task_set.push_back(task4[i4]);
+						assert(temp_task_set.size() == 5);
+
+						if (!is_schedulable(temp_task_set))
+							continue;
 						for (int i5=0; i5<task5.size(); i5++)
 						{
+							while (temp_task_set.size() != 5)
+								temp_task_set.pop_back();
+							temp_task_set.push_back(task5[i5]);
+							assert(temp_task_set.size() == 6);
+
+							if (!is_schedulable(temp_task_set))
+								continue;
 							for (int i6=0; i6<task6.size(); i6++)
 							{
+								while (temp_task_set.size() != 6)
+									temp_task_set.pop_back();
+								temp_task_set.push_back(task6[i6]);
+								assert(temp_task_set.size() == 7);
+
+								if (!is_schedulable(temp_task_set))
+									continue;
 								for (int i7=0; i7<task7.size(); i7++)
 								{
+									while (temp_task_set.size() != 7)
+										temp_task_set.pop_back();
+									temp_task_set.push_back(task7[i7]);
+									assert(temp_task_set.size() == 8);
+
+									if (!is_schedulable(temp_task_set))
+										continue;
 									for (int i8=0; i8<task8.size(); i8++)
 									{
+										while (temp_task_set.size() != 8)
+											temp_task_set.pop_back();
+										temp_task_set.push_back(task8[i8]);
+										assert(temp_task_set.size() == 9);
+
+										if (!is_schedulable(temp_task_set))
+											continue;
 										for (int i9=0; i9<task9.size(); i9++)
 										{
-											std::cout<<i0<<" "<<i1<<" "<<i2<<" "<<i3<<" "<<i4<<" "<<i5<<" "<<i6<<" "<<i7<<" "<<i8<<" "<<i9<<" "<<std::endl;
-											std::vector<struct task> temp_task_set;
-											temp_task_set.push_back(task0[i0]);
-											temp_task_set.push_back(task1[i1]);
-											temp_task_set.push_back(task2[i2]);
-											temp_task_set.push_back(task3[i3]);
-											temp_task_set.push_back(task4[i4]);
-											temp_task_set.push_back(task5[i5]);
-											temp_task_set.push_back(task6[i6]);
-											temp_task_set.push_back(task7[i7]);
-											temp_task_set.push_back(task8[i8]);
+											while (temp_task_set.size() != 9)
+												temp_task_set.pop_back();
 											temp_task_set.push_back(task9[i9]);
+											assert(temp_task_set.size() == 10);
 
-											if (is_schedulable(temp_task_set))
-											{
-												double soq = 0;
-												soq += task0[i0].quality;
-												soq += task1[i1].quality;
-												soq += task2[i2].quality;
-												soq += task3[i3].quality;
-												soq += task4[i4].quality;
-												soq += task5[i5].quality;
-												soq += task6[i6].quality;
-												soq += task7[i7].quality;
-												soq += task8[i8].quality;
-												soq += task9[i9].quality;
+											if (!is_schedulable(temp_task_set))
+												continue;
 
-												if (maxQ < soq)
-													maxQ = soq;
-											}
+											double soq = 0;
+											soq += task0[i0].quality;
+											soq += task1[i1].quality;
+											soq += task2[i2].quality;
+											soq += task3[i3].quality;
+											soq += task4[i4].quality;
+											soq += task5[i5].quality;
+											soq += task6[i6].quality;
+											soq += task7[i7].quality;
+											soq += task8[i8].quality;
+											soq += task9[i9].quality;
+
+											if (maxQ < soq)
+												maxQ = soq;
 										}
 									}
 								}
@@ -91,7 +146,6 @@ int main()
 			}
 		}
 	}
-
 	std::cout<<"Exhaustive: "<<maxQ<<std::endl;
 
 	return 0;

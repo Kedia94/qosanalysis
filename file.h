@@ -7,6 +7,7 @@
 #include "common.h"
 
 std::vector<struct task> readFile(std::string filename);
+std::vector<struct task> readFileBig(std::string filename);
 void writeFile(std::string filename, std::vector<struct task>);
 
 #endif

@@ -1,6 +1,10 @@
 *.swp
 *.o
 *.txt
+*.con
 exhaustive
 worst
+getconvex
 ours
+best
+random

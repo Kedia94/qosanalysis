@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include <fstream>
+#include <iomanip>
 
 #include "common.h"
 #include "file.h"
@@ -91,7 +92,7 @@ void writeFile(std::string filename, std::vector<struct task> task_list)
 	{
 		for (int i=0; i<task_list.size(); i++)
 		{
-			outFile<<task_list[i].execute<<" "<<task_list[i].period<<" "<<task_list[i].quality<<std::endl;
+			outFile<<task_list[i].execute<<" "<<task_list[i].period<<" "<<task_list[i].quality<<std::setprecision(16)<<std::endl;
 		}
 		outFile.close();
 	}

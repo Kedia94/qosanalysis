@@ -32,17 +32,17 @@ int main()
 
 	double quality = 0;
 
-	quality += task0[0].quality;
-	quality += task1[0].quality;
-	quality += task2[0].quality;
-	quality += task3[0].quality;
-	quality += task4[0].quality;
-	quality += task5[0].quality;
-	quality += task6[0].quality;
-	quality += task7[0].quality;
-	quality += task8[0].quality;
-	quality += task9[0].quality;
+	quality += task0[task0.size()-1].quality;
+	quality += task1[task1.size()-1].quality;
+	quality += task2[task2.size()-1].quality;
+	quality += task3[task3.size()-1].quality;
+	quality += task4[task4.size()-1].quality;
+	quality += task5[task5.size()-1].quality;
+	quality += task6[task6.size()-1].quality;
+	quality += task7[task7.size()-1].quality;
+	quality += task8[task8.size()-1].quality;
+	quality += task9[task9.size()-1].quality;
 
-	std::cout<<"Worst: "<<quality<<std::endl;
+	std::cout<<"Best: "<<quality<<std::endl;
 	return 0;
 }

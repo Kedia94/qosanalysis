@@ -48,44 +48,20 @@ int main()
 	std::stable_sort(task8.begin(), task8.end(), sort_utilization);
 	std::stable_sort(task9.begin(), task9.end(), sort_utilization);
 
-	int i0=std::rand() % task0.size();
-	int i1=std::rand() % task1.size();
-	int i2=std::rand() % task2.size();
-	int i3=std::rand() % task3.size();
-	int i4=std::rand() % task4.size();
-	int i5=std::rand() % task5.size();
-	int i6=std::rand() % task6.size();
-	int i7=std::rand() % task7.size();
-	int i8=std::rand() % task8.size();
-	int i9=std::rand() % task9.size();
+	for (int j=0; j<10; j++)
+	{
+		int i0=std::rand() % task0.size();
+		int i1=std::rand() % task1.size();
+		int i2=std::rand() % task2.size();
+		int i3=std::rand() % task3.size();
+		int i4=std::rand() % task4.size();
+		int i5=std::rand() % task5.size();
+		int i6=std::rand() % task6.size();
+		int i7=std::rand() % task7.size();
+		int i8=std::rand() % task8.size();
+		int i9=std::rand() % task9.size();
 
-	std::vector<struct task> task_list;
-	task_list.push_back(task0[i0]);
-	task_list.push_back(task1[i1]);
-	task_list.push_back(task2[i2]);
-	task_list.push_back(task3[i3]);
-	task_list.push_back(task4[i4]);
-	task_list.push_back(task5[i5]);
-	task_list.push_back(task6[i6]);
-	task_list.push_back(task7[i7]);
-	task_list.push_back(task8[i8]);
-	task_list.push_back(task9[i9]);
-
-	double gap;
-	while(!is_schedulable(task_list)){
-		task_list.clear();
-
-		i0=std::rand() % task0.size();
-		i1=std::rand() % task1.size();
-		i2=std::rand() % task2.size();
-		i3=std::rand() % task3.size();
-		i4=std::rand() % task4.size();
-		i5=std::rand() % task5.size();
-		i6=std::rand() % task6.size();
-		i7=std::rand() % task7.size();
-		i8=std::rand() % task8.size();
-		i9=std::rand() % task9.size();
-
+		std::vector<struct task> task_list;
 		task_list.push_back(task0[i0]);
 		task_list.push_back(task1[i1]);
 		task_list.push_back(task2[i2]);
@@ -96,24 +72,50 @@ int main()
 		task_list.push_back(task7[i7]);
 		task_list.push_back(task8[i8]);
 		task_list.push_back(task9[i9]);
+
+		double gap;
+		while(!is_schedulable(task_list)){
+			task_list.clear();
+
+			i0=std::rand() % task0.size();
+			i1=std::rand() % task1.size();
+			i2=std::rand() % task2.size();
+			i3=std::rand() % task3.size();
+			i4=std::rand() % task4.size();
+			i5=std::rand() % task5.size();
+			i6=std::rand() % task6.size();
+			i7=std::rand() % task7.size();
+			i8=std::rand() % task8.size();
+			i9=std::rand() % task9.size();
+
+			task_list.push_back(task0[i0]);
+			task_list.push_back(task1[i1]);
+			task_list.push_back(task2[i2]);
+			task_list.push_back(task3[i3]);
+			task_list.push_back(task4[i4]);
+			task_list.push_back(task5[i5]);
+			task_list.push_back(task6[i6]);
+			task_list.push_back(task7[i7]);
+			task_list.push_back(task8[i8]);
+			task_list.push_back(task9[i9]);
+		}
+
+
+		double result = 0;
+		result += task0[i0].quality;
+		result += task1[i1].quality;
+		result += task2[i2].quality;
+		result += task3[i3].quality;
+		result += task4[i4].quality;
+		result += task5[i5].quality;
+		result += task6[i6].quality;
+		result += task7[i7].quality;
+		result += task8[i8].quality;
+		result += task9[i9].quality;
+
+		std::cout<<i0<<" "<<i1<<" "<<i2<<" "<<i3<<" "<<i4<<" "<<i5<<" "<<i6<<" "<<i7<<" "<<i8<<" "<<i9<<std::endl;
+		std::cout<<"Random: "<<result<<std::endl;
 	}
-
-
-	double result = 0;
-	result += task0[i0].quality;
-	result += task1[i1].quality;
-	result += task2[i2].quality;
-	result += task3[i3].quality;
-	result += task4[i4].quality;
-	result += task5[i5].quality;
-	result += task6[i6].quality;
-	result += task7[i7].quality;
-	result += task8[i8].quality;
-	result += task9[i9].quality;
-
-	std::cout<<i0<<" "<<i1<<" "<<i2<<" "<<i3<<" "<<i4<<" "<<i5<<" "<<i6<<" "<<i7<<" "<<i8<<" "<<i9<<std::endl;
-	std::cout<<"Random: "<<result<<std::endl;
-
 	return 0;
 }
 
